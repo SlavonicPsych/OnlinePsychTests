@@ -1,0 +1,1345 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .layer-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 350px;
+            background-color: #ffffff;
+            overflow: hidden;
+            text-align: center
+        }
+        .layer-middle {
+            position: fixed;
+            top: 350px;
+            width: 100%;
+            height: 50px;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        .layer-bottom {
+            margin-top: 400px;
+            background-color: #ffffff;
+        }
+
+        .grid-container-label {
+            display: grid;
+            width: 100%;
+            grid-template-rows: repeat(2, auto);
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+            margin: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            width: 100%;
+            grid-template-rows: repeat(90, auto);
+            grid-template-columns: 1fr 1fr;
+            grid-row-gap: 10px; /* Adjust padding as needed */
+        }
+
+        .grid-cell {
+            display: flex;
+            border: 0px solid #ccc;
+            padding: 0px;
+            align-items: center;
+        }
+
+        .merged-cells {
+            padding: 10px;
+            grid-column: span 2;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .column-left {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        .column-right {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .column-button {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 30px;
+            margin-left: 43px;
+            margin-right: 43px;
+            white-space: nowrap;
+        }
+
+        radioset {
+            display: flex;
+        }
+
+        .invalid {
+            border: 1px solid #ff8888;
+        }
+
+        label {
+            margin-left: 42px;
+            margin-right: 42px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+            label input[type="radio"] {
+                display: none;
+            }
+
+            label radiobox {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border: 1px solid #333;
+                text-align: center;
+                line-height: 30px;
+                cursor: pointer;
+            }
+
+            label input:checked + radiobox {
+                background-color: #333;
+                color: #fff;
+            }
+    </style>
+    <title>Шкала психологического благополучия</title>
+</head>
+<body>
+
+    <form method="post" action="" name="formtest" id="formtest">
+
+        <div class="layer-top" id="topLayer" style="color: #ff0000">
+            <!-- Instruction -->
+            <p><b>Шкала психологического благополучия</b></p>
+            <div style="color: #ff0000; padding-left: 5%; padding-right: 5%">
+                Instruction here.
+            </div>
+            <br><br>
+            <div style="padding-left: 5%; padding-right: 5%">
+                Следующие утверждения о том, что Вы чувствуете относительно себя и Вашей жизни.Пожалуйста, помните, что здесь нет правильных или неправильных ответов.
+            </div>
+
+            <br><br>
+            <!-- Consent form -->
+            <div style="color: #ff0000; padding-left: 5%; padding-right: 5%">
+                Click the checkbox below to indicate the you would like to participate in the experiment.
+                <br>
+                <input type="checkbox" name="consent" id="consent" required style="height:20px; width:20px"> I agree to take part in this study.
+                <br><br>
+                Experiment ID: <input type="text" name="expid" placeholder="ID" required style="height:30px; width:120px; font-size:18px">
+            </div>
+        </div>
+
+        <div class="layer-middle" id="midLayer">
+            <!-- Response labels -->
+            <div class="grid-container-label">
+                <!-- Response labels -->
+                <div class="grid-cell column-leff"></div>
+                <div class="grid-cell column-right">
+                    <div class="header">Абсолютно <br> не согласен</div>
+                    <div class="header">Не согласен</div>
+                    <div class="header">Скорее <br> не согласен</div>
+                    <div class="header">Скорее <br> согласен</div>
+                    <div class="header">Согласен</div>
+                    <div class="header">Абсолютно <br> согласен</div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="layer-bottom">
+
+            <div class="grid-container">
+
+                <!-- Question-01 -->
+                <div class="grid-cell column-left">1. Большинство моих знакомых считают меня любящим и преданным человеком.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q01" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-02 -->
+                <div class="grid-cell column-left">2. Иногда я меняю свое поведение или образ мышления, чтобы не выделяться.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q02" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-03 -->
+                <div class="grid-cell column-left">3. Как правило, я считаю себя в ответе за то, как я живу.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q03" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-04 -->
+                <div class="grid-cell column-left">4. Меня не интересуют занятия, которые принесут результат в отдаленном будущем.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q04" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-05 -->
+                <div class="grid-cell column-left">5. Мне приятно думать о том, что я совершил в прошлом и надеюсь совершить в будущем.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q05" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-06 -->
+                <div class="grid-cell column-left">6. Когда я оглядываюсь назад, мне нравится, как сложилась моя жизнь.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q06" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-07 -->
+                <div class="grid-cell column-left">7. Поддержание близких отношений было связано для меня с трудностями и разочарованиями.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q07" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-08 -->
+                <div class="grid-cell column-left">8. Я не боюсь высказывать свое мнение, даже если оно противоречит мнению большинства.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q08" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-09 -->
+                <div class="grid-cell column-left">9. Требования повседневной жизни часто угнетают меня.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q09" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-10 -->
+                <div class="grid-cell column-left">10. В принципе, я считаю, что со временем узнаю о себе все больше и больше.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q10" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-11 -->
+                <div class="grid-cell column-left">11. Я живу сегодняшним днем и не особо задумываюсь о будущем.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q11" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-12 -->
+                <div class="grid-cell column-left">12. В целом я уверен в себе.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q12" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-13 -->
+                <div class="grid-cell column-left">13. Мне часто бывает одиноко из-за того, что у меня мало друзей, с кем я могу поделиться своими проблемами.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q13" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q13" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q13" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q13" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q13" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q13" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-14 -->
+                <div class="grid-cell column-left">14. На мои решения обычно не влияет то, что делают другие.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q14" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q14" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q14" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q14" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q14" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q14" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-15 -->
+                <div class="grid-cell column-left">15. Я не очень вписываюсь в сообщество окружающих меня людей.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q15" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q15" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q15" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q15" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q15" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q15" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-16 -->
+                <div class="grid-cell column-left">16. Я отношусь к тем людям, которым нравится пробовать все новое.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q16" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q16" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q16" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q16" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q16" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q16" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-17 -->
+                <div class="grid-cell column-left">17. Я стараюсь сосредоточиться на настоящем, потому что будущее почти всегда приносит какие-то проблемы.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q17" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q17" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q17" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q17" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q17" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q17" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-18 -->
+                <div class="grid-cell column-left">18. Мне кажется, что многие из моих знакомых преуспели в жизни больше, чем я.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q18" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q18" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q18" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q18" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q18" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q18" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-19 -->
+                <div class="grid-cell column-left">19. Я люблю задушевные беседы с родными или друзьями.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q19" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q19" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q19" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q19" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q19" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q19" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-20 -->
+                <div class="grid-cell column-left">20. Меня беспокоит то, что думают обо мне другие.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q20" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q20" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q20" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q20" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q20" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q20" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-21 -->
+                <div class="grid-cell column-left">21. Я вполне справляюсь со своими повседневными заботами.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q21" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q21" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q21" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q21" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q21" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q21" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-22 -->
+                <div class="grid-cell column-left">22. Я не хочу пробовать новые виды деятельности — моя жизнь и так меня устраивает.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q22" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q22" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q22" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q22" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q22" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q22" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-23 -->
+                <div class="grid-cell column-left">23. Моя жизнь имеет смысл.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q23" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q23" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q23" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q23" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q23" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q23" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-24 -->
+                <div class="grid-cell column-left">24. Если бы у меня была такая возможность, я бы многое в себе изменил.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q24" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q24" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q24" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q24" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q24" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q24" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-25 -->
+                <div class="grid-cell column-left">25. Мне кажется важным быть хорошим слушателем, когда близкие друзья делятся со мной своими проблемами.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q25" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q25" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q25" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q25" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q25" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q25" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-26 -->
+                <div class="grid-cell column-left">26. Для меня важнее быть в согласии с самим собой, чем получать одобрение окружающих.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q26" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q26" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q26" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q26" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q26" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q26" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-27 -->
+                <div class="grid-cell column-left">27. Я часто чувствую, что мои обязанности угнетают меня.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q27" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q27" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q27" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q27" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q27" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q27" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-28 -->
+                <div class="grid-cell column-left">28. Мне кажется, что новый опыт, способный изменить мои представления о себе и об окружающем мире, очень важен.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q28" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q28" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q28" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q28" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q28" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q28" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-29 -->
+                <div class="grid-cell column-left">29. Мои повседневные дела часто кажутся мне банальными и незначительными.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q29" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q29" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q29" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q29" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q29" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q29" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-30 -->
+                <div class="grid-cell column-left">30. В целом я себе нравлюсь.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q30" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q30" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q30" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q30" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q30" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q30" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-31 -->
+                <div class="grid-cell column-left">31. У меня не так много знакомых, готовых выслушать меня, когда мне нужно выговориться.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q31" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q31" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q31" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q31" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q31" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q31" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-32 -->
+                <div class="grid-cell column-left">32. На меня оказывают влияние сильные люди.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q32" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q32" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q32" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q32" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q32" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q32" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-33 -->
+                <div class="grid-cell column-left">33. Если бы я был несчастен в жизни, я предпринял бы эффективные меры, чтобы изменить ситуацию.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q33" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q33" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q33" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q33" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q33" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q33" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-34 -->
+                <div class="grid-cell column-left">34. Если задуматься, то с годами я не стал намного лучше.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q34" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q34" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q34" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q34" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q34" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q34" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-35 -->
+                <div class="grid-cell column-left">35. Я не очень хорошо осознаю, чего хочу достичь в жизни.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q35" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q35" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q35" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q35" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q35" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q35" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-36 -->
+                <div class="grid-cell column-left">36. Я совершал ошибки, но все, что ни делается, — все к лучшему.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q36" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q36" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q36" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q36" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q36" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q36" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-37 -->
+                <div class="grid-cell column-left">37. Я считаю, что многое получаю от друзей.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q37" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q37" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q37" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q37" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q37" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q37" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-38 -->
+                <div class="grid-cell column-left">38. Людям редко удается уговорить меня сделать то, чего я сам не хочу.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q38" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q38" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q38" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q38" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q38" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q38" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-39 -->
+                <div class="grid-cell column-left">39. Я неплохо справляюсь со своими финансовыми делами.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q39" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q39" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q39" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q39" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q39" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q39" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-40 -->
+                <div class="grid-cell column-left">40. На мой взгляд, человек способен расти и развиваться в любом возрасте.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q40" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q40" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q40" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q40" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q40" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q40" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-41 -->
+                <div class="grid-cell column-left">41. Когда-то я ставил перед собой цели, но теперь это кажется мне пустой тратой времени.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q41" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q41" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q41" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q41" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q41" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q41" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-42 -->
+                <div class="grid-cell column-left">42. Во многом я разочарован своими достижениями в жизни.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q42" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q42" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q42" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q42" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q42" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q42" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-43 -->
+                <div class="grid-cell column-left">43. Мне кажется, что у большинства людей больше друзей, чем у меня.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q43" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q43" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q43" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q43" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q43" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q43" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-44 -->
+                <div class="grid-cell column-left">44. Для меня важнее приспособиться к окружающим людям, чем в одиночку отстаивать свои принципы.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q44" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q44" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q44" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q44" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q44" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q44" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-45 -->
+                <div class="grid-cell column-left">45. Я расстраиваюсь, когда не успеваю сделать все, что намечено на день.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q45" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q45" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q45" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q45" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q45" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q45" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-46 -->
+                <div class="grid-cell column-left">46. Со временем я стал лучше разбираться в жизни, и это сделало меня более сильным и компетентным.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q46" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q46" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q46" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q46" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q46" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q46" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-47 -->
+                <div class="grid-cell column-left">47. Мне доставляет удовольствие составлять планы на будущее и воплощать их в жизнь.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q47" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q47" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q47" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q47" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q47" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q47" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-48 -->
+                <div class="grid-cell column-left">48. Как правило, я горжусь тем, какой я, и какой образ жизни я веду.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q48" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q48" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q48" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q48" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q48" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q48" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-49 -->
+                <div class="grid-cell column-left">49. Окружающие считают меня отзывчивым человеком, у которого всегда найдется время для других.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q49" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q49" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q49" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q49" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q49" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q49" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-50 -->
+                <div class="grid-cell column-left">50. Я уверен в своих суждениях, даже если они идут вразрез с общепринятым мнением.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q50" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q50" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q50" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q50" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q50" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q50" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-51 -->
+                <div class="grid-cell column-left">51. Я умею рассчитывать свое время так, чтобы все делать в срок.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q51" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q51" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q51" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q51" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q51" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q51" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-52 -->
+                <div class="grid-cell column-left">52. У меня есть ощущение, что с годами я стал лучше.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q52" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q52" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q52" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q52" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q52" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q52" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-53 -->
+                <div class="grid-cell column-left">53. Я активно стараюсь осуществлять планы, которые составляю для себя.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q53" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q53" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q53" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q53" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q53" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q53" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-54 -->
+                <div class="grid-cell column-left">54. Я завидую образу жизни многих людей.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q54" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q54" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q54" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q54" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q54" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q54" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-55 -->
+                <div class="grid-cell column-left">55. У меня было мало теплых доверительных отношений с другими людьми.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q55" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q55" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q55" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q55" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q55" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q55" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-56 -->
+                <div class="grid-cell column-left">56. Мне трудно высказывать свое мнение по спорным вопросам.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q56" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q56" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q56" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q56" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q56" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q56" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-57 -->
+                <div class="grid-cell column-left">57. Я занятой человек, но я получаю удовольствие от того, что справляюсь с делами.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q57" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q57" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q57" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q57" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q57" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q57" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-58 -->
+                <div class="grid-cell column-left">58. Я не люблю оказываться в новых ситуациях, когда нужно менять привычный для меня способ поведения.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q58" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q58" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q58" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q58" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q58" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q58" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-59 -->
+                <div class="grid-cell column-left">59. Я не отношусь к людям, которые скитаются по жизни безо всякой цели.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q59" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q59" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q59" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q59" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q59" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q59" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-60 -->
+                <div class="grid-cell column-left">60. Возможно, я отношусь к себе хуже, чем большинство людей.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q60" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q60" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q60" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q60" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q60" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q60" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-61 -->
+                <div class="grid-cell column-left">61. Когда дело доходит до дружбы, я часто чувствую себя сторонним наблюдателем.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q61" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q61" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q61" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q61" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q61" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q61" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-62 -->
+                <div class="grid-cell column-left">62. Я часто меняю свою точку зрения, если друзья или родные не согласны с ней.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q62" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q62" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q62" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q62" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q62" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q62" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-63 -->
+                <div class="grid-cell column-left">63. Я не люблю строить планы на день, потому что никогда не успеваю сделать все запланированное.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q63" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q63" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q63" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q63" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q63" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q63" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-64 -->
+                <div class="grid-cell column-left">64. Для меня жизнь — это непрерывный процесс познания и развития.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q64" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q64" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q64" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q64" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q64" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q64" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-65 -->
+                <div class="grid-cell column-left">65. Мне иногда кажется, что я уже совершил в жизни все, что было можно.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q65" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q65" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q65" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q65" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q65" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q65" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-66 -->
+                <div class="grid-cell column-left">66. Я часто просыпаюсь с мыслью о том, что жил неправильно.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q66" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q66" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q66" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q66" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q66" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q66" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-67 -->
+                <div class="grid-cell column-left">67. Я знаю, что могу доверять моим друзьям, а они знают, что могут доверять мне.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q67" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q67" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q67" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q67" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q67" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q67" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-68 -->
+                <div class="grid-cell column-left">68. Я не из тех, кто поддается давлению общества в том, как себя вести и как мыслить.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q68" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q68" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q68" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q68" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q68" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q68" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-69 -->
+                <div class="grid-cell column-left">69. Мне удалось найти себе подходящее занятие и нужные мне отношения.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q69" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q69" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q69" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q69" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q69" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q69" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-70 -->
+                <div class="grid-cell column-left">70. Мне нравится наблюдать, как с годами мои взгляды изменились и стали более зрелыми.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q70" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q70" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q70" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q70" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q70" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q70" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-71 -->
+                <div class="grid-cell column-left">71. Цели, которые я ставил перед собой, чаще приносили мне радость, нежели разочарование.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q71" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q71" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q71" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q71" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q71" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q71" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-72 -->
+                <div class="grid-cell column-left">72. В моем прошлом были взлеты и падения, но я не хотел бы ничего менять.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q72" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q72" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q72" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q72" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q72" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q72" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-73 -->
+                <div class="grid-cell column-left">73. Мне трудно полностью раскрыться в общении с людьми.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q73" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q73" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q73" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q73" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q73" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q73" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-74 -->
+                <div class="grid-cell column-left">74. Меня беспокоит, как окружающие оцени-вают то, что я выбираю в жизни.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q74" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q74" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q74" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q74" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q74" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q74" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-75 -->
+                <div class="grid-cell column-left">75. Мне трудно обустроить свою жизнь так, как хотелось бы.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q75" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q75" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q75" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q75" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q75" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q75" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-76 -->
+                <div class="grid-cell column-left">76. Я уже давно не пытаюсь изменить или улучшить свою жизнь.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q76" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q76" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q76" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q76" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q76" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q76" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-77 -->
+                <div class="grid-cell column-left">77. Мне приятно думать о том, чего я достиг в жизни.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q77" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q77" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q77" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q77" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q77" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q77" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-78 -->
+                <div class="grid-cell column-left">78. Когда я сравниваю себя со своими друзьями и знакомыми, то понимаю, что я во многом лучше их.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q78" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q78" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q78" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q78" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q78" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q78" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-79 -->
+                <div class="grid-cell column-left">79. Мы с моими друзьями относимся с сочувствием к проблемам друг друга.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q79" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q79" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q79" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q79" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q79" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q79" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-80 -->
+                <div class="grid-cell column-left">80. Я сужу о себе исходя из того, что я считаю важным, а не из того, что считают важным другие.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q80" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q80" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q80" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q80" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q80" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q80" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-81 -->
+                <div class="grid-cell column-left">81. Мне удалось создать себе такое жилище и такой образ жизни, которые мне очень нравятся.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q81" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q81" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q81" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q81" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q81" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q81" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-82 -->
+                <div class="grid-cell column-left">82. Старого пса не научить новым трюкам.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q82" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q82" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q82" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q82" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q82" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q82" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-83 -->
+                <div class="grid-cell column-left">83. Я не уверен, что мне стоит чего-то ждать от жизни.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q83" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q83" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q83" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q83" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q83" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q83" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-84 -->
+                <div class="grid-cell column-left">84. Каждый имеет недостатки, но у меня их больше, чем у других.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q84" value="-3"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q84" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q84" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q84" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q84" value="2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q84" value="3"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <div class="merged-cells column-center">
+                    <input type="hidden" id="date" name="date" readonly>
+                    <input type="hidden" id="sheetname" name="sheetname" value="Raw data" readonly>
+                    <input type="submit" value="Отправить" id="submit" style="height:30px; width:120px; font-size:18px">
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+
+    <script>
+        window.onscroll = function () {
+            scrollFunction();
+        };
+        function scrollFunction() {
+            var topLayer = document.getElementById("topLayer");
+            var midLayer = document.getElementById("midLayer");
+
+            topLayer.style.top = -document.scrollingElement.scrollTop + "px";
+
+            if (document.scrollingElement.scrollTop < 350) {
+                midLayer.style.top = 350 - document.scrollingElement.scrollTop + "px";
+                midLayer.style.borderBottom = "0px"
+            } else {
+                midLayer.style.top = "0px";
+                midLayer.style.borderBottom = "1px solid #dddddd"
+            }
+        }
+
+        function additional_data() {
+            const dateInput = document.getElementById('date');
+            var currentDate = new Date();
+            dateInput.value = currentDate.toISOString().slice(0, 19).replace("T", " ");
+        }
+        additional_data();
+
+        function checkForm() {
+            var sets = document.querySelectorAll('radioset');
+            var isAllChecked = true;
+            sets.forEach(function (set) {
+                var radios = set.querySelectorAll('input[type="radio"]');
+                var isChecked = Array.from(radios).some(function (radio) {
+                    return radio.checked;
+                });
+                if (!isChecked) {
+                    set.classList.add('invalid');
+                    isAllChecked = false;
+                } else {
+                    set.classList.remove('invalid');
+                }
+            });
+            return isAllChecked;
+        }
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyhHUPon3SN1eCGf31Q3z8f_e6g0hboRQJRUz_TMFuHpyYO6G11Y9CXknUDd1-D_njW/exec'
+        const form = document.forms['formtest']
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            var isComplete = checkForm();
+            if (!isComplete) {
+                alert("Анкеты заполнены не полностью.")
+                return;
+            }
+
+            document.getElementById('submit').value = 'Обработка...';
+            document.getElementById('submit').disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Спасибо! Ваша форма успешно отправлена."))
+                .then(() => { window.location.reload(); })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+</html>

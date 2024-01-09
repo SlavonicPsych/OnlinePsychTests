@@ -1,0 +1,422 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .layer-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 350px;
+            background-color: #ffffff;
+            overflow: hidden;
+            text-align: center
+        }
+        .layer-middle {
+            position: fixed;
+            top: 350px;
+            width: 100%;
+            height: 70px;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        .layer-bottom {
+            margin-top: 420px;
+            background-color: #ffffff;
+        }
+
+        .grid-container-label {
+            display: grid;
+            width: 100%;
+            grid-template-rows: repeat(2, auto);
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+            margin: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            width: 100%;
+            grid-template-rows: repeat(80, auto);
+            grid-template-columns: 1fr 1fr;
+            grid-row-gap: 10px; /* Adjust padding as needed */
+        }
+
+        .grid-cell {
+            display: flex;
+            border: 0px solid #ccc;
+            padding: 0px;
+            align-items: center;
+        }
+
+        .merged-cells {
+            padding: 10px;
+            grid-column: span 2;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .column-left {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        .column-right {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .column-button {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 30px;
+            margin-left: 55px;
+            margin-right: 55px;
+            white-space: nowrap;
+        }
+
+        radioset {
+            display: flex;
+        }
+
+        .invalid {
+            border: 1px solid #ff8888;
+        }
+
+        label {
+            margin-left: 54px;
+            margin-right: 54px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+            label input[type="radio"] {
+                display: none;
+            }
+
+            label radiobox {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                border: 1px solid #333;
+                text-align: center;
+                line-height: 30px;
+                cursor: pointer;
+            }
+
+            label input:checked + radiobox {
+                background-color: #333;
+                color: #fff;
+            }
+    </style>
+    <title>Методы этнической и кросскультурной психологии</title>
+</head>
+<body>
+
+    <form method="post" action="" name="formtest" id="formtest">
+
+        <div class="layer-top" id="topLayer" style="color: #ff0000">
+            <!-- Instruction -->
+            <p><b>Методы этнической и кросскультурной психологии</b></p>
+            <div style="color: #ff0000; padding-left: 5%; padding-right: 5%">
+                Instruction here. Мы предлагаем вам ответить на вопросы, касающиеся вашей этнической принадлежности, вашей этнической группы и вашего отношения к ней. Но сначала продолжите предложение.
+            </div>
+            <br><br>
+            <!-- Consent form -->
+            <div style="color: #ff0000; padding-left: 5%; padding-right: 5%">
+                Click the checkbox below to indicate the you would like to participate in the experiment.
+                <br>
+                <input type="checkbox" name="consent" id="consent" required style="height:20px; width:20px"> I agree to take part in this study.
+                <br><br>
+                Experiment ID: <input type="text" name="expid" placeholder="ID" required style="height:25px; width:120px; font-size:18px">
+            </div>
+            <br>
+
+            С точки зрения этнической принадлежности я рассматриваю себя как <input type="text" name="my_ethnicity" required style="height:25px; width:400px; font-size:18px">.
+
+            <br><br>
+            Прочитайте утверждения и рядом с каждым из них отметьте крестиком ответ, который отражает степень вашего согласия с утверждением.
+
+
+        </div>
+
+        <div class="layer-middle" id="midLayer">
+            <!-- Response labels -->
+            <div class="grid-container-label">
+                <!-- Response labels -->
+                <div class="grid-cell column-leff"></div>
+                <div class="grid-cell column-right">
+                    <div class="header">Совершенно <br> согласен</div>
+                    <div class="header">Скорее <br> согласен, чем <br> не согла­сен</div>
+                    <div class="header">Скорее не <br> согласен, чем <br> согласен</div>
+                    <div class="header">Совершенно <br> не согла­сен</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layer-bottom">
+
+            <div class="grid-container">
+
+                <!-- Question-01 -->
+                <div class="grid-cell column-left">1. Не чувствую в себе уверенности.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q01" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q01" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-02 -->
+                <div class="grid-cell column-left">2. Я активен в организа­циях или социальных группах, которые вклю­чают преимущественно членов моей этнической группы.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q02" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q02" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-03 -->
+                <div class="grid-cell column-left">3. Я очень хорошо знаю свое этническое проис­хождение и понимаю, что оно значит для меня.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q03" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q03" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-04 -->
+                <div class="grid-cell column-left">4. Я много думаю о том, как этническая принад­лежность повлияет на мою жизнь.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q04" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q04" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-05 -->
+                <div class="grid-cell column-left">5. Я рад, что принад­лежу к своей этниче­ской группе.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q05" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q05" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-06 -->
+                <div class="grid-cell column-left">6. Я четко чувствую связь со своей этниче­ской группой.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q06" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q06" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-07 -->
+                <div class="grid-cell column-left">7. Я хорошо понимаю, что значит для меня моя этническая принадлежность.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q07" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q07" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-08 -->
+                <div class="grid-cell column-left">8. Для того чтобы узнать побольше о своей этнической группе, я говорил о ней со многими людьми.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q08" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q08" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-09 -->
+                <div class="grid-cell column-left">9. Я горжусь своей этнической группой.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q09" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q09" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-10 -->
+                <div class="grid-cell column-left">10. Я соблюдаю тради­ции своей этнической группы.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q10" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q10" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-11 -->
+                <div class="grid-cell column-left">11. Я чувствую сильную привязанность к своей этнической группе.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q11" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q11" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-12 -->
+                <div class="grid-cell column-left">12. Я хорошо отношусь к своему этническому происхождению.</div>
+                <div class="grid-cell column-right">
+                    <radioset>
+                        <label><input type="radio" name="q12" value="-2"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="-1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="1"> <radiobox></radiobox></label>
+                        <label><input type="radio" name="q12" value="2"> <radiobox></radiobox></label>
+                    </radioset>
+                </div>
+
+                <!-- Question-Extra -->
+                <div class="grid-cell column-left" style="padding-right: 15px; padding-top: 5px; padding-bottom: 10px">
+                    Этническая группа
+                </div>
+                <div class="grid-cell column-right" style="padding-left: 15px; padding-top: 5px; padding-bottom: 10px">
+                    <input type="text" name="my_group" required style="height:25px; width:400px; font-size:18px">.
+                </div>
+
+                <div class="grid-cell column-left" style="padding-right: 15px; padding-top: 5px; padding-bottom: 10px">
+                    Этническая группа отца
+                </div>
+                <div class="grid-cell column-right" style="padding-left: 15px; padding-top: 5px; padding-bottom: 10px">
+                    <input type="text" name="father_group" required style="height:25px; width:400px; font-size:18px">.
+                </div>
+
+                <div class="grid-cell column-left" style="padding-right: 15px; padding-top: 5px; padding-bottom: 10px">
+                    Этническая группа матери
+                </div>
+                <div class="grid-cell column-right" style="padding-left: 15px; padding-top: 5px; padding-bottom: 10px">
+                    <input type="text" name="mother_group" required style="height:25px; width:400px; font-size:18px">.
+                </div>
+
+
+                <div class="grid-cell column-left" style="padding-right: 15px; padding-top: 5px; padding-bottom: 10px">
+                    Пол
+                </div>
+                <div class="grid-cell column-right" style="padding-left: 15px; padding-top: 5px; padding-bottom: 10px">
+                    <input type="text" name="gender" required style="height:25px; width:400px; font-size:18px">.
+                </div>
+
+                <div class="grid-cell column-left" style="padding-right: 15px; padding-top: 5px; padding-bottom: 10px">
+                    Возраст
+                </div>
+                <div class="grid-cell column-right" style="padding-left: 15px; padding-top: 5px; padding-bottom: 10px">
+                    <input type="text" name="age" required style="height:25px; width:400px; font-size:18px">.
+                </div>
+
+                <div class="merged-cells column-center">
+                    <input type="hidden" id="date" name="date" readonly>
+                    <input type="hidden" id="sheetname" name="sheetname" value="Raw data" readonly>
+                    <input type="submit" value="Отправить" id="submit" style="height:30px; width:120px; font-size:18px">
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <script>
+        window.onscroll = function () {
+            scrollFunction();
+        };
+        function scrollFunction() {
+            var topLayer = document.getElementById("topLayer");
+            var midLayer = document.getElementById("midLayer");
+
+            topLayer.style.top = -document.scrollingElement.scrollTop + "px";
+
+            if (document.scrollingElement.scrollTop < 350) {
+                midLayer.style.top = 350 - document.scrollingElement.scrollTop + "px";
+                midLayer.style.borderBottom = "0px"
+            } else {
+                midLayer.style.top = "0px";
+                midLayer.style.borderBottom = "1px solid #dddddd"
+            }
+        }
+
+        function additional_data() {
+            const dateInput = document.getElementById('date');
+            var currentDate = new Date();
+            dateInput.value = currentDate.toISOString().slice(0, 19).replace("T", " ");
+        }
+        additional_data();
+
+        function checkForm() {
+            var sets = document.querySelectorAll('radioset');
+            var isAllChecked = true;
+            sets.forEach(function (set) {
+                var radios = set.querySelectorAll('input[type="radio"]');
+                var isChecked = Array.from(radios).some(function (radio) {
+                    return radio.checked;
+                });
+                if (!isChecked) {
+                    set.classList.add('invalid');
+                    isAllChecked = false;
+                } else {
+                    set.classList.remove('invalid');
+                }
+            });
+            return isAllChecked;
+        }
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz6XoVwCJ4EH-GDcCSMsxOBBxVF8aJ1LcQseOX7HciwDLELprnyDiljSnVmmb8elfFXCw/exec'
+        const form = document.forms['formtest']
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            var isComplete = checkForm();
+            if (!isComplete) {
+                alert("Анкеты заполнены не полностью.")
+                return;
+            }
+
+            document.getElementById('submit').value = 'Обработка...';
+            document.getElementById('submit').disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Спасибо! Ваша форма успешно отправлена."))
+                .then(() => { window.location.reload(); })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+</html>
